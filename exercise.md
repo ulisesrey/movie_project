@@ -1,88 +1,3 @@
----
-jupyter:
-  colab:
-    provenance:
-    - file_id: 1uc6Rcurf4_qlh6Q485-54Sfg6jcKXzwF
-      timestamp: 1664790160357
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  language_info:
-    codemirror_mode:
-      name: ipython
-      version: 3
-    file_extension: .py
-    mimetype: text/x-python
-    name: python
-    nbconvert_exporter: python
-    pygments_lexer: ipython3
-    version: 3.10.6
-  nbformat: 4
-  nbformat_minor: 1
-  toc:
-    base_numbering: 1
-    nav_menu: {}
-    number_sections: true
-    sideBar: true
-    skip_h1_title: false
-    title_cell: Table of Contents
-    title_sidebar: Contents
-    toc_cell: false
-    toc_position: {}
-    toc_section_display: true
-    toc_window_display: false
-  varInspector:
-    cols:
-      lenName: 16
-      lenType: 16
-      lenVar: 40
-    kernels_config:
-      python:
-        delete_cmd_prefix: del
-        library: var_list.py
-        varRefreshCmd: print(var_dic_list())
-      r:
-        delete_cmd_postfix: )
-        delete_cmd_prefix: rm(
-        library: var_list.r
-        varRefreshCmd: cat(var_dic_list())
-    types_to_exclude:
-    - module
-    - function
-    - builtin_function_or_method
-    - instance
-    - \_Feature
-    window_display: false
----
-
-::: {.cell .markdown id="9U8aW7wOOaYS"}
-```{=html}
-<div style="width: 100%; clear: both;">
-    <div style="float: left; width: 50%;">
-       <img src="http://www.uoc.edu/portal/_resources/common/imatges/marca_UOC/UOC_Masterbrand.jpg", align="left">
-    </div>
-</div>
-```
-```{=html}
-<div style="float: right; width: 50%;">
-    <p style="margin: 0; padding-top: 22px; text-align:right;">22.403 · Programació per a la ciència de dades</p>
-    <p style="margin: 0; text-align:right;">Grau en Ciència de Dades Aplicada</p>
-    <p style="margin: 0; text-align:right; padding-button: 100px;">Estudis d'Informàtica, Multimèdia i Telecomunicació</p>
-</div>
-```
-```{=html}
-</div>
-```
-```{=html}
-<div style="width: 100%; clear: both;">
-```
-```{=html}
-<div style="width:100%;">&nbsp;</div>
-```
-:::
-
-::: {.cell .markdown id="IUs10ThXOaYU"}
 # Programació per a la ciència de dades - PEC4
 
 En aquest Notebook trobareu l\'exercici que suposa la quarta i darrera
@@ -102,9 +17,7 @@ llicència i dependències (`requirements.txt`) comentats a la teoria.
 
 Fer un setup.py és opcional, però si es fa es valorarà positivament de
 cara a la nota de la pràctica i del curs.
-:::
 
-::: {.cell .markdown id="gaEHGkzSOaYV"}
 # Enunciat:
 
 La companyia de mitjans de comunicació Open Broadcast Corporation
@@ -158,9 +71,7 @@ distribuïda en tres fitxers que contenen les variables següents:
 -   **production_countries**: països de producció
 
 Aquests tres fitxers es troben a la carpeta comprimida **TMDB.zip**.
-:::
 
-::: {.cell .markdown id="ySGU4MKlPi9_"}
 # Presentació dels resultats:
 
 Per fer el lliurament més fàcil i homogeni us demanem que organitzeu el
@@ -174,9 +85,7 @@ executar-les una per una si es desitja. Ho heu de documentar tot molt bé
 al README perquè es pugui executar sense problema. Us recordem que al
 README també heu d\'indicar com executar els tests i comprovar-ne la
 cobertura.
-:::
 
-::: {.cell .markdown id="7HmjDLEziV2n"}
 ### Exercici 1: Descompressió i lectura de fitxers. {#exercici-1-descompressió-i-lectura-de-fitxers}
 
 #### Exercici 1.1. {#exercici-11}
@@ -271,9 +180,7 @@ el camp \"genres\" buit no s\'inclouen.
 
 Redacteu un breu informe que recopili les conclusions obtingudes a
 l\'anàlisi realitzada.
-:::
 
-::: {.cell .markdown id="5L41AFTmOaYa"}
 ## Criteris de correcció
 
 Aquesta PAC es valorarà seguint els criteris següents:
@@ -304,9 +211,7 @@ Aquesta PAC es valorarà seguint els criteris següents:
     fitxer README, que presenti el projecte i expliqui com executar-lo,
     així com la inclusió de la llicència sota la qual es distribueix el
     codi (podeu triar la que vulgueu).
-:::
 
-::: {.cell .markdown id="8p8r2xwROaYb"}
 ### Important
 
 **Nota 1**: De la mateixa manera que a les PACs anteriors, els criteris
@@ -326,4 +231,4 @@ se\'n comprova la cobertura.
 **Nota 3**: Lliureu el paquet com un únic fitxer .zip que contingui
 només el codi al Registre d\'Avaluació Contínua. **El codi de Python
 haurà d\'estar escrit en fitxers plans de Python.**
-:::
+
