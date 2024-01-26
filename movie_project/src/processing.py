@@ -18,10 +18,11 @@ def calculate_days_on_air(df):
     days_on_air: Series
         The number of days between the first and last air date for each show.
     """
-    days_on_air = df.groupby("id")["date"].agg(["min", "max"])
-    days_on_air["days_on_air"] = days_on_air["max"] - days_on_air["min"]
-    days_on_air.drop(["min", "max"], axis=1, inplace=True)
-    return days_on_air
+    df["first_air_date"] = pd.to_datetime(df["first_air_date"])
+    df["last_air_date"] = pd.to_datetime(df["last_air_date"])
+    df["days_on_air"] =  df["last_air_date"] - df["first_air_date"]
+
+    return df["days_on_air"]
 
 
 def create_show_poster_dict(df):
