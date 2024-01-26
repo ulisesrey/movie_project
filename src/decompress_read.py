@@ -3,6 +3,7 @@ import zipfile
 import tarfile
 import pandas as pd
 import time
+import csv
 
 def decompress_file(file_path):
     """
@@ -54,6 +55,36 @@ def read_and_merge_csv(list_of_csvs, id="id"):
 
     return merged_df
 
+
+def read_and_merge_csv_to_dict(list_of_csvs, id="id"):
+    """
+    Read multiple CSV files and merge them into a single dictionary using the specified key.
+
+    Parameters:
+    ------------
+    list_of_csvs: list
+        A list of paths to the CSV files to be read and merged.
+    id: str, optional
+        The column name to use as the key for merging the dictionaries. Default is "id".
+
+    Returns:
+    ------------
+    merged_dict: dict
+        The merged dictionary.
+    """
+    start_time = time.time()
+    merged_dict = {}
+
+    for csv_file in list_of_csvs:
+        with open(csv_file, 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                merged_dict[row[id]] = row
+
+    end_time = time.time()
+    print(f"Processing time: {end_time - start_time} seconds")
+
+    return merged_dict
 
 # Example usage
 decompress_file('/path/to/TMDB.zip')
