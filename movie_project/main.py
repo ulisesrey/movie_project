@@ -10,7 +10,7 @@ if __name__ == "__main__":
     csv_list = glob.glob("movie_project/data/*.csv")
 
     # merge the csv files into a single dataframe
-    merged_df = merge_csv_files(csv_list, id="id")
+    merged_df = read_and_merge_csv_files(csv_list, id="id")
     # optional to save the merged_df
     merged_df.to_csv("movie_project/data/merged_df.csv", index=False)
 

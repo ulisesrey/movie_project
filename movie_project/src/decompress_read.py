@@ -1,3 +1,7 @@
+"""
+TODO: add docstring
+"""
+
 import os
 import zipfile
 import tarfile
@@ -32,31 +36,29 @@ def decompress_file(file_path, output_dir=None):
         print(f"Error: File {file_path} is not in zip or tar.gz format.")
 
 
-def read_and_merge_csv(csv_list, id="id"):
+def read_and_merge_csv_files(csv_files, id="id"):
     """
-    Read multiple CSV files and merge them into a single DataFrame using the specified key.
+    Merge multiple CSV files into a single DataFrame based on the 'ID' column.
 
     Parameters:
-    ------------
-    csv_list: list
-        A list of paths to the CSV files to be read and merged.
-    id: str, optional
-        The column name to use as the key for merging the dataframes. Default is "id".
+    - csv_files (list): List of paths to CSV files.
 
     Returns:
-    ------------
-    merged_df: DataFrame
-        The merged dataframe.
+    - pd.DataFrame: Merged DataFrame.
     """
-    start_time = time.time()
+    # Initialize an empty DataFrame
     merged_df = pd.DataFrame()
 
-    dfs = (pd.read_csv(csv_file) for csv_file in csv_list)
-    merged_df = pd.concat(dfs, ignore_index=True)
-
-    # merged_df.set_index(id, inplace=True)
-    end_time = time.time()
-    print(f"Processing time: {end_time - start_time} seconds")
+    # Iterate through each CSV file
+    for i, csv_file in enumerate(csv_files):
+        # Read the CSV file
+        df = pd.read_csv(csv_file)
+        if i == 0:
+            # If it's the first CSV file, assign it to the DataFrame
+            merged_df = df
+        else:
+            # Merge with the existing DataFrame based on the 'ID' column
+            merged_df = pd.merge(merged_df, df, on='id', how="outer")
 
     return merged_df
 
