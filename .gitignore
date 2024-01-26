@@ -3,3 +3,4 @@ movie_project.egg-info/*
 movie_project/data/*
 movie_project/dev/*.csv
 movie_project/test/test_data/*.csv
+movie_project/reports/data/*.csv
