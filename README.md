@@ -6,8 +6,11 @@ description
 ## Description
 
 ## Installation
-requirements
-install it as a package
+### requirements
+Can they be installed with the package with pip install?
+
+### install it as a package
+add git clone?
 ```bash
 cd package_directory
 pip install .
