@@ -32,3 +32,27 @@ def plot_count_per_year(df):
     plt.ylabel("Number of shows")
     plt.show() 
     return None
+
+def plot_type_per_decade(df, start_decade=1940):
+    """
+    Plot the number of shows per genre and per decade.
+
+    Parameters:
+    ------------
+    df: DataFrame
+        The dataframe containing the air dates.
+
+    Returns:
+    ------------
+    None
+    """
+    # If first_aire_date column is not datetype, convert it to datetype
+    if df["first_air_date"].dtype != "datetime64[ns]":
+        df["first_air_date"] = pd.to_datetime(df["first_air_date"])
+
+    # create column "decade"
+    df["decade"]=df["first_air_date"].dt.year//10*10
+    df=df[df["decade"]>start_decade]
+    df.groupby(["decade","type"]).size().unstack().plot(kind="bar")
+    plt.show(block=True)
+    return None

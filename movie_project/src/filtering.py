@@ -99,3 +99,35 @@ def filter_by_status(df, status):
     filtered_df = df[df["status"] == status]
     return filtered_df
 
+def filter_genres(df, minimum_percent=0.01):
+    """
+    Filters genres that are below a threshold and removes movies without a genre.
+
+    Parameters:
+    ------------
+    df: DataFrame
+        The dataframe to be filtered.
+
+    Returns:
+    ------------
+    filtered_df: DataFrame
+        The filtered dataframe.
+    """
+    genres = df.groupby(by="genres")
+    genres_list = genres.size().index.to_list()
+    flattened_list = [item for sublist in (s.split(',') for s in genres_list) for item in sublist]
+    
+    # remove spaces from list, to merge e.g. " Drama" and "Drama"
+    flattened_list = [s.strip() for s in flattened_list]
+
+    genres_count = pd.Series(flattened_list).value_counts()
+    total_genres_count = genres_count.sum()
+    genres_percent = genres_count/total_genres_count
+
+    # filter genres that are below a threshold
+    genres_to_keep = genres_percent[genres_percent > minimum_percent].index.to_list()
+    genres_to_discard = genres_percent[genres_percent <= minimum_percent].index.to_list()
+
+    
+    return filtered_df
+

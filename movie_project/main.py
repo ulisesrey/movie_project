@@ -7,6 +7,8 @@ from movie_project.src.filtering import filter_by_string_in_overview
 from movie_project.src.filtering import filter_by_starting_year
 from movie_project.src.filtering import filter_by_status
 from movie_project.src.plotting import plot_count_per_year
+from movie_project.src.plotting import plot_type_per_decade
+
 
 if __name__ == "__main__":
     
@@ -82,3 +84,6 @@ if __name__ == "__main__":
     # Exercise 4.1:
     plot_count_per_year(merged_df)
     print("THE END")
+
+    ## Exercise 4.2:
+    plot_type_per_decade(merged_df, start_decade=1940)
