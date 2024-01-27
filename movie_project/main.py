@@ -2,6 +2,8 @@ import glob
 from movie_project.src.decompress_read import *
 from movie_project.src.processing import calculate_days_on_air
 from movie_project.src.processing import create_show_poster_dict
+from movie_project.src.filtering import filter_by_language
+from movie_project.src.filtering import filter_by_string_in_overview
 
 if __name__ == "__main__":
     
@@ -28,15 +30,30 @@ if __name__ == "__main__":
     ## Exercise 2.1:
     days_on_air = calculate_days_on_air(merged_df)
 
-    # Show top 10 shows with the most days on air
-    days_on_air.sort_values(by="days_on_air", ascending=False).head(10)
+    # Show the top shows with the most days on air
+    top_shows = 10
+    days_on_air.sort_values(by="days_on_air", ascending=False).head(top_shows)
 
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
     poster_dict = create_show_poster_dict(merged_df)
 
-    # Show the first 5 shows in the dictionary
-    for key, value in list(poster_dict.items())[:5]:
+    # Show the first entries in the dictionary
+    entries_to_show = 5
+    for key, value in list(poster_dict.items())[:entries_to_show]:
         print(f"{key}: {value}")
+
+
+
+    # Exercise 3:
+    ## Exercise 3.1:
+    
+    lang_df = filter_by_language(merged_df, "en")
+
+    # This works, but convert to function with given parameters
+    lang_df[lang_df["overview"].str.contains("the Battle of Britain", na=False, case=True)]
+
+    topic_lang_df = filter_by_string_in_overview(lang_df, ["crime", "mistery"]) # Not case sensitive
+    topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
     print("THE END")

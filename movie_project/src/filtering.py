@@ -35,6 +35,6 @@ def filter_by_string_in_overview(df, list_of_strings):
     filtered_df: DataFrame
         The filtered dataframe.
     """
-    # str.contains() should be case insensitive
-    filtered_df = df[df["overview"].str.contains('|'.join(list_of_strings), case=False)]
+    # str.contains() should NOT be case sensitive
+    filtered_df = df[df["overview"].str.contains('|'.join(list_of_strings), na=False, case=False)]
     return filtered_df
