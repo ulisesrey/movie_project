@@ -23,3 +23,7 @@ separate
 
 ### Output
 
+To improve: The exercise explicitly asks for questions like: What is the evolution of types of movie per decade?
+Althought the functions have been written to be able to answer to questions more broadly, the specific answer to these questions is hard coded in the main.py output.
+
+The report for this exercise can be found in reports/pac4_report.md
