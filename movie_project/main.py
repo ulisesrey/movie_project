@@ -6,8 +6,10 @@ from movie_project.src.filtering import filter_by_language
 from movie_project.src.filtering import filter_by_string_in_overview
 from movie_project.src.filtering import filter_by_starting_year
 from movie_project.src.filtering import filter_by_status
+from movie_project.src.filtering import filter_genres
 from movie_project.src.plotting import plot_count_per_year
 from movie_project.src.plotting import plot_type_per_decade
+from movie_project.src.plotting import genre_piechart
 
 
 if __name__ == "__main__":
@@ -64,7 +66,7 @@ if __name__ == "__main__":
     # If you want to save the filtered dataframe
     topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
-    # Exercise 3.2:
+    ## Exercise 3.2:
     year = 2023
     status = "Canceled"
     entries_to_show = 20
@@ -73,7 +75,7 @@ if __name__ == "__main__":
     status_year_df = filter_by_status(year_df, status=status)
     status_year_df[["name", "first_air_date", "status"]].head(entries_to_show)
     
-    # Exercise 3.3:
+    ## Exercise 3.3:
     language = "ja" # japanese
     entries_to_show = 20
     new_lang_df = filter_by_language(merged_df, language=language, strict=False)
@@ -81,9 +83,17 @@ if __name__ == "__main__":
     
 
     # Visualization part
-    # Exercise 4.1:
+    ## Exercise 4.1:
     plot_count_per_year(merged_df)
-    print("THE END")
+
 
     ## Exercise 4.2:
     plot_type_per_decade(merged_df, start_decade=1940)
+
+    ## Exercise 4.3:
+    genres_df = filter_genres(merged_df, minimum_percentage=0.01)
+    genre_piechart(merged_df)
+
+
+    print("THE END")
+
