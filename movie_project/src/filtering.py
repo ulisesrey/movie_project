@@ -10,7 +10,7 @@ import pandas as pd
 
 
 # function to filter by language
-def filter_by_language(df, language):
+def filter_by_language(df, language, strict=True):
     """
     Filter the dataframe by language.
 
@@ -20,13 +20,23 @@ def filter_by_language(df, language):
         The dataframe to be filtered.
     language: str
         The language to filter by.
+    strict: bool
+        If True, the language must match exactly the language in the dataframe.
+        If False, the language in the dataframe must contain the language.
+            e.g.: if language = "ja" would return a row with language = "en, ja, ko"
+            Attention:
+            if language = "ja" meant for "japanese" would return a row with language="javanese"
 
     Returns:
     ------------
     filtered_df: DataFrame
         The filtered dataframe.
     """
-    filtered_df = df[df["original_language"] == language]
+    if strict:
+        filtered_df = df[df["original_language"] == language]
+    else:
+        filtered_df = df[df["original_language"].str.contains(language, na=False, case=False)]
+
     return filtered_df
 
 def filter_by_string_in_overview(df, strings_to_filter):

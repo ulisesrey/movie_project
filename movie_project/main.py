@@ -71,5 +71,9 @@ if __name__ == "__main__":
     status_year_df[["name", "first_air_date", "status"]].head(entries_to_show)
     
     # Exercise 3.3:
+    language = "ja" # japanese
+    entries_to_show = 20
+    new_lang_df = filter_by_language(merged_df, language=language, strict=False)
+    new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show)
     
     print("THE END")
