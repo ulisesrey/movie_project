@@ -1,3 +1,13 @@
+"""
+
+Disclaimer:
+============
+Some of these functions are very simple, in some cases one-liners and might not need a function by itself.
+But the purpose of these exercise was also in part to organize code in modules, so it made sense to do it like this.
+"""
+
+import pandas as pd
+
 
 # function to filter by language
 def filter_by_language(df, language):
@@ -19,7 +29,7 @@ def filter_by_language(df, language):
     filtered_df = df[df["original_language"] == language]
     return filtered_df
 
-def filter_by_string_in_overview(df, list_of_strings):
+def filter_by_string_in_overview(df, strings_to_filter):
     """
     Filter the dataframe by string in overview.
 
@@ -27,7 +37,7 @@ def filter_by_string_in_overview(df, list_of_strings):
     ------------
     df: DataFrame
         The dataframe to be filtered.
-    list_of_strings: list
+    strings_to_filter: list
         The list of strings to filter by.
 
     Returns:
@@ -36,5 +46,46 @@ def filter_by_string_in_overview(df, list_of_strings):
         The filtered dataframe.
     """
     # str.contains() should NOT be case sensitive
-    filtered_df = df[df["overview"].str.contains('|'.join(list_of_strings), na=False, case=False)]
+    filtered_df = df[df["overview"].str.contains('|'.join(strings_to_filter), na=False, case=False)]
     return filtered_df
+
+def filter_by_starting_year(df, start_year):
+    """
+    Filter the dataframe by year.
+
+    Parameters:
+    ------------
+    df: DataFrame
+        The dataframe to be filtered.
+    start_year: int
+        The year to filter by.
+
+    Returns:
+    ------------
+    filtered_df: DataFrame
+        The filtered dataframe.
+    """
+    df["first_air_date"] = pd.to_datetime(df["first_air_date"])
+
+    filtered_df = df[df["first_air_date"].dt.year == start_year]
+    return filtered_df
+
+def filter_by_status(df, status):
+    """
+    Filter the dataframe by status.
+
+    Parameters:
+    ------------
+    df: DataFrame
+        The dataframe to be filtered.
+    status: str
+        The status to filter by.
+
+    Returns:
+    ------------
+    filtered_df: DataFrame
+        The filtered dataframe.
+    """
+    filtered_df = df[df["status"] == status]
+    return filtered_df
+
