@@ -34,3 +34,6 @@ if __name__ == "__main__":
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
     show_poster_dict = create_show_poster_dict(merged_df)
+
+
+    print("THE END")
