@@ -33,7 +33,10 @@ if __name__ == "__main__":
 
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
-    show_poster_dict = create_show_poster_dict(merged_df)
+    poster_dict = create_show_poster_dict(merged_df)
 
+    # Show the first 5 shows in the dictionary
+    for key, value in list(poster_dict.items())[:5]:
+        print(f"{key}: {value}")
 
     print("THE END")
