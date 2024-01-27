@@ -1,6 +1,8 @@
 import glob
-from src.decompress_read import *
+from movie_project.src.decompress_read import *
 from movie_project.src.processing import calculate_days_on_air
+from movie_project.src.processing import create_show_poster_dict
+
 if __name__ == "__main__":
     
     # decompress the compressed file
@@ -26,4 +28,9 @@ if __name__ == "__main__":
     ## Exercise 2.1:
     days_on_air = calculate_days_on_air(merged_df)
 
-    days_on_air.head()
+    # Show top 10 shows with the most days on air
+    days_on_air.sort_values(by="days_on_air", ascending=False).head(10)
+
+    ## Exercise 2.2:
+    # Create a dictionary with show names and poster paths
+    show_poster_dict = create_show_poster_dict(merged_df)
