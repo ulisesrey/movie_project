@@ -56,3 +56,22 @@ def plot_type_per_decade(df, start_decade=1940):
     df.groupby(["decade","type"]).size().unstack().plot(kind="bar")
     plt.show()
     return None
+
+
+def genre_piechart(df):
+    """
+    Plot a piechart with the percentage of shows per genre.
+
+    Parameters:
+    ------------
+    df: DataFrame
+        
+    Returns:
+    ------------
+    None
+    """
+    #do a piechart with the dataframe
+    plt.pie(df.groupby("genres").size(), labels=df.groupby("genres").size().index, autopct='%1.1f%%')
+    plt.show()
+    return None
+    
