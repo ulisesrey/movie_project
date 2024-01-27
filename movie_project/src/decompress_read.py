@@ -46,6 +46,9 @@ def read_and_merge_csv_files(csv_files, id="id"):
     Returns:
     - pd.DataFrame: Merged DataFrame.
     """
+
+    start_time = time.time()
+    
     # Initialize an empty DataFrame
     merged_df = pd.DataFrame()
 
@@ -59,6 +62,8 @@ def read_and_merge_csv_files(csv_files, id="id"):
         else:
             # Merge with the existing DataFrame based on the 'ID' column
             merged_df = pd.merge(merged_df, df, on='id', how="outer")
+    end_time = time.time()
+    print(f"Processing time: {end_time - start_time} seconds")
 
     return merged_df
 
