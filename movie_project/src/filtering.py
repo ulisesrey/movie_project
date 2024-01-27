@@ -99,7 +99,7 @@ def filter_by_status(df, status):
     filtered_df = df[df["status"] == status]
     return filtered_df
 
-def filter_genres(df, minimum_percent=0.01):
+def filter_genres(df, minimum_percentage=0.01):
     """
     Filters genres that are below a threshold and removes movies without a genre.
 
@@ -113,6 +113,8 @@ def filter_genres(df, minimum_percent=0.01):
     filtered_df: DataFrame
         The filtered dataframe.
     """
+    # drop rows where genres is Nan
+    df.dropna(subset=["genres"], inplace=True)
     genres = df.groupby(by="genres")
     genres_list = genres.size().index.to_list()
     flattened_list = [item for sublist in (s.split(',') for s in genres_list) for item in sublist]
@@ -125,9 +127,16 @@ def filter_genres(df, minimum_percent=0.01):
     genres_percent = genres_count/total_genres_count
 
     # filter genres that are below a threshold
-    genres_to_keep = genres_percent[genres_percent > minimum_percent].index.to_list()
-    genres_to_discard = genres_percent[genres_percent <= minimum_percent].index.to_list()
+    genres_to_keep = genres_percent[genres_percent > minimum_percentage].index.to_list()
+    genres_to_discard = genres_percent[genres_percent <= minimum_percentage].index.to_list()
 
+
+    genres_df = pd.DataFrame(genres_percent)
+    genres_clean_df = genres_df.replace(genres_to_discard, "Other")
     
-    return filtered_df
+    # TODO: need to merge all the columns that have index "Other" together
+
+    #df[]
+
+    return genres_clean_df
 
