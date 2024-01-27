@@ -4,6 +4,8 @@ from movie_project.src.processing import calculate_days_on_air
 from movie_project.src.processing import create_show_poster_dict
 from movie_project.src.filtering import filter_by_language
 from movie_project.src.filtering import filter_by_string_in_overview
+from movie_project.src.filtering import filter_by_starting_year
+from movie_project.src.filtering import filter_by_status
 
 if __name__ == "__main__":
     
@@ -47,13 +49,27 @@ if __name__ == "__main__":
 
     # Exercise 3:
     ## Exercise 3.1:
+    language = "en"
+    lang_df = filter_by_language(merged_df, language=language)
+
+    strings_to_filter = ["crime", "mistery"]
+    topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter) # Not case sensitive
     
-    lang_df = filter_by_language(merged_df, "en")
+    # print it
+    print(topic_lang_df["name"])
 
-    # This works, but convert to function with given parameters
-    lang_df[lang_df["overview"].str.contains("the Battle of Britain", na=False, case=True)]
-
-    topic_lang_df = filter_by_string_in_overview(lang_df, ["crime", "mistery"]) # Not case sensitive
+    # If you want to save the filtered dataframe
     topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
+    # Exercise 3.2:
+    year = 2023
+    status = "Canceled"
+    entries_to_show = 20
+
+    year_df = filter_by_starting_year(merged_df, start_year=year)
+    status_year_df = filter_by_status(year_df, status=status)
+    status_year_df[["name", "first_air_date", "status"]].head(entries_to_show)
+    
+    # Exercise 3.3:
+    
     print("THE END")
