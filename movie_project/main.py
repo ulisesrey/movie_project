@@ -6,6 +6,7 @@ from movie_project.src.filtering import filter_by_language
 from movie_project.src.filtering import filter_by_string_in_overview
 from movie_project.src.filtering import filter_by_starting_year
 from movie_project.src.filtering import filter_by_status
+from movie_project.src.plotting import plot_count_per_year
 
 if __name__ == "__main__":
     
@@ -76,4 +77,8 @@ if __name__ == "__main__":
     new_lang_df = filter_by_language(merged_df, language=language, strict=False)
     new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show)
     
+
+    # Visualization part
+    # Exercise 4.1:
+    plot_count_per_year(merged_df)
     print("THE END")
