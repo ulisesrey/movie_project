@@ -19,6 +19,17 @@ pip install .
 ## Run
 All together
 separate
+
+Might need to be run from the main folder.
+Try
+```bash
+python movie_project/main.py
+```
+and
+```bash
+cd movie_project
+python main.py #this might not work
+```
 ### Input
 
 ### Output
