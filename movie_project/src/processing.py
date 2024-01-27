@@ -40,14 +40,12 @@ def create_show_poster_dict(df):
         The ordered dictionary with show names and poster paths.
     """
 
-    #df.loc[:,('homepage', 'poster_path')].fillna('NOT AVAILABLE', inplace=True)
-    #df.loc[:,('homepage', 'poster_path')].replace('', 'NOT AVAILABLE', inplace=True)
-    df['homepage'].fillna("Not Available", inplace=True)
-    df['homepage'].replace("", "Not Available", inplace=True)
-    df['poster_path'].fillna("Not Available", inplace=True)
-    df['poster_path'].replace("", "Not Available", inplace=True)
+    combined_indices = df[df['homepage'].isna() | (df['poster_path'].isna()) | (df['homepage'] == '') | (df['poster_path'] == '')].index
 
     df["full_poster_path"]=df["homepage"] + df["poster_path"]
+
+    # write "Not Available" in "full_poster_path" column for the combined indices
+    df.loc[combined_indices, "full_poster_path"] = "Not Available"
 
     show_poster_dict = OrderedDict(zip(df['name'], df['full_poster_path']))
 

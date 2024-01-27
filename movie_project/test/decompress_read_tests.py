@@ -9,7 +9,7 @@ class DecompressAndRead(unittest.TestCase):
     def setUpClass(cls):
         print("Finding csv files")
         cls._csv_list = glob.glob("movie_project/data/*.csv")
-        print("list of csv is:", csv_list)
+        print("list of csv is:", cls._csv_list)
 
     def test_merged_df_length(self):
         self.assertTrue(len(read_and_merge_csv(self._csv_list, id="id"))==486414)
