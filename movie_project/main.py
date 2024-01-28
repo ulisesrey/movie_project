@@ -22,12 +22,12 @@ def read():
     csv_list = glob.glob("movie_project/data/*.csv")
 
     # merge the csv files into a single dataframe
-    df = read_and_merge_csv_files(csv_list, id="id")
+    df = read_and_merge_csv_files(csv_list, my_id="id")
     # optional to save the df
     #df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
 
     # # merge the csv files into a single dictionary
-    merged_dict = read_and_merge_csv_to_dict(csv_list, id="id")
+    merged_dict = read_and_merge_csv_to_dict(csv_list, my_id="id")
     
     return df, merged_dict
 
