@@ -1,6 +1,6 @@
 import unittest
 import glob
-from movie_project.src.decompress_read import read_and_merge_csv
+from movie_project.src.decompress_read import read_and_merge_csv_files
 
 
 class DecompressAndRead(unittest.TestCase):
@@ -12,7 +12,7 @@ class DecompressAndRead(unittest.TestCase):
         print("list of csv is:", cls._csv_list)
 
     def test_merged_df_length(self):
-        self.assertTrue(len(read_and_merge_csv(self._csv_list, id="id"))==486414)
+        self.assertTrue(len(read_and_merge_csv_files(self._csv_list, my_id="id"))==162138)
 
 
 unittest.main(argv=['first-arg-is-ignored'], verbosity=2, exit=False)
