@@ -60,7 +60,8 @@ def plot_type_per_decade(df, start_decade=1940, normalize=True):
     if normalize:
         counts_per_decade = counts_per_decade.div(counts_per_decade.sum(axis=1), axis=0)
 
-    counts_per_decade.plot(kind="bar", stacked=True)
+    ax = counts_per_decade.plot(kind="bar", stacked=True)
+    ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
     plt.title('Types of shows per decade')
     plt.ylabel("Percentage of shows")
     plt.show()
