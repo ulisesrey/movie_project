@@ -2,8 +2,10 @@
 
 Disclaimer:
 ============
-Some of these functions are very simple, in some cases one-liners and might not need a function by itself.
-But the purpose of these exercise was also in part to organize code in modules, so it made sense to do it like this.
+Some of these functions are very simple,
+in some cases one-liners and might not need a function by itself.
+But the purpose of these exercise was also in part to organize code in modules,
+so it made sense to do it like this.
 """
 
 import pandas as pd
@@ -25,7 +27,7 @@ def filter_by_language(df, language, strict=True):
         If False, the language in the dataframe must contain the language.
             e.g.: if language = "ja" would return a row with language = "en, ja, ko"
             Attention:
-            if language = "ja" meant for "japanese" would return a row with language="javanese"
+            language = "ja" meant for "japanese" would return a row with language="javanese"
 
     Returns:
     ------------
@@ -38,6 +40,7 @@ def filter_by_language(df, language, strict=True):
         filtered_df = df[df["original_language"].str.contains(language, na=False, case=False)]
 
     return filtered_df
+
 
 def filter_by_string_in_overview(df, strings_to_filter):
     """
@@ -58,6 +61,7 @@ def filter_by_string_in_overview(df, strings_to_filter):
     # str.contains() should NOT be case sensitive
     filtered_df = df[df["overview"].str.contains('|'.join(strings_to_filter), na=False, case=False)]
     return filtered_df
+
 
 def filter_by_starting_year(df, start_year):
     """
@@ -120,7 +124,7 @@ def filter_genres(df, minimum_percentage=0.01):
     # get list of all genres TODO: This part could be improved
     genres_list = genres.size().index.to_list()
     flattened_list = [item for sublist in (s.split(',') for s in genres_list) for item in sublist]
-    
+
     # remove spaces from list, to merge e.g. " Drama" and "Drama"
     flattened_list = [s.strip() for s in flattened_list]
 
@@ -129,18 +133,12 @@ def filter_genres(df, minimum_percentage=0.01):
     genres_percent = genres_count/total_genres_count
 
     # filter genres that are below a threshold
-    genres_to_keep = genres_percent[genres_percent > minimum_percentage].index.to_list()
     genres_to_discard = genres_percent[genres_percent <= minimum_percentage].index.to_list()
-
 
     genres_df = pd.DataFrame(genres_percent)
     genres_df.reset_index(inplace=True)
     genres_clean_df = genres_df.replace(genres_to_discard, "Other")
     # Combine all categories that now are "Other"
     combined_series = genres_clean_df.groupby('index')['count'].sum()
-    
-
-    #df[]
 
     return combined_series
-
