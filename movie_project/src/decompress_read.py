@@ -1,5 +1,5 @@
 """
-TODO: add docstring
+Module to decompress and read the data
 """
 
 import os
@@ -94,8 +94,8 @@ def read_and_merge_csv_to_dict(csv_list, my_id):
     merged_dict = {}
 
     for csv_file in csv_list:
-        with open(csv_file, 'r') as f:
-            reader = csv.DictReader(f)
+        with open(csv_file, 'r') as file:
+            reader = csv.DictReader(file)
             for row in reader:
                 merged_dict[row[my_id]] = row
 

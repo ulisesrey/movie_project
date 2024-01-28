@@ -34,6 +34,7 @@ def plot_count_per_year(df):
     plt.ylabel("Number of shows")
     plt.show()
 
+
 def plot_type_per_decade(df, start_decade=1940, normalize=True):
     """
     Plot the number of shows per genre and per decade.
@@ -52,13 +53,13 @@ def plot_type_per_decade(df, start_decade=1940, normalize=True):
         df["first_air_date"] = pd.to_datetime(df["first_air_date"])
 
     # create column "decade"
-    df["decade"]=df["first_air_date"].dt.year//10*10
-    df=df[df["decade"]>start_decade]
+    df["decade"] = df["first_air_date"].dt.year//10*10
+    df = df[df["decade"] > start_decade]
 
-    counts_per_decade = df.groupby(["decade","type"]).size().unstack()
+    counts_per_decade = df.groupby(["decade", "type"]).size().unstack()
     if normalize:
         counts_per_decade = counts_per_decade.div(counts_per_decade.sum(axis=1), axis=0)
-    
+
     counts_per_decade.plot(kind="bar", stacked=True)
     plt.title('Types of shows per decade')
     plt.ylabel("Percentage of shows")
@@ -72,7 +73,7 @@ def genre_piechart(series):
     Parameters:
     ------------
     series: pd.Series
-        
+
     Returns:
     ------------
     None
@@ -86,4 +87,3 @@ def genre_piechart(series):
 
     plt.title('Shows per genre', loc="left")
     plt.show()
-    

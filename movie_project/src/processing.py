@@ -1,5 +1,9 @@
-import pandas as pd
+"""
+Module containing the processing functions
+"""
 from collections import OrderedDict
+import pandas as pd
+
 
 # add a function to convert df col to datetime?
 
