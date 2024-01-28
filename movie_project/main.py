@@ -14,6 +14,7 @@ from movie_project.src.filtering import filter_genres
 from movie_project.src.plotting import plot_count_per_year
 from movie_project.src.plotting import plot_type_per_decade
 from movie_project.src.plotting import genre_piechart
+import pandas as pd
 
 # Reading part
 def read():
@@ -82,10 +83,14 @@ def filters(merged_df):
     print(status_year_df[["name", "first_air_date", "status"]].head(ENTRIES_TO_SHOW))
 
     ## Exercise 3.3:
+    pd.set_option('display.max_columns', None)
+    # pd.set_option('display.max_rows', None)
+    # pd.set_option('display.width', None)
+    # pd.set_option('display.max_colwidth', None)
     LANGUAGE = "ja" # japanese
     ENTRIES_TO_SHOW = 20
     new_lang_df = filter_by_language(merged_df, language=LANGUAGE, strict=False)
-    print(f"\nThese are the some shows that are in \"{LANGUAGE}\":")
+    print(f"\nThese are the some shows that are in \"{LANGUAGE}\" and their networs and production companies:")
     print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW))
 
 # Visualization part
@@ -103,41 +108,40 @@ def plot(merged_df):
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser(description="Movie project Script")
-    # parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
-    # parser.add_argument("--process", action="store_true", help="Process the dataset")
-    # parser.add_argument("--filters", action="store_true", help="Apply request filters to the dataset")
-    # parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
-    # parser.add_argument('--all', action='store_true', help='Run all blocks')
+    parser = argparse.ArgumentParser(description="Movie project Script")
+    parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
+    parser.add_argument("--process", action="store_true", help="Process the dataset")
+    parser.add_argument("--filters", action="store_true", help="Apply request filters to the dataset")
+    parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
+    parser.add_argument('--all', action='store_true', help='Run all blocks')
 
-    # args = parser.parse_args()
-    args_all= True
+    args = parser.parse_args()
 
-    # if args.decompress or args.all:
-    #     # Exercise 1:
-    #     # decompress the compressed file
-    #     decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
+    if args.decompress or args.all:
+        # Exercise 1:
+        # decompress the compressed file
+        decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
     # read always unless command was decompress
-    #if not args.decompress:
+    if not args.decompress:
         # reading part
-    merged_df, merged_dict = read()
+        merged_df, merged_dict = read()
 
-    if args_all:
+    if args.all:
         process(merged_df)
         filters(merged_df)
         plot(merged_df)
         
-    # if args.process:
-    #     # processing part
-    #     process(merged_df)
+    if args.process:
+        # processing part
+        process(merged_df)
     
-    # if args.filters:
-    #     # filtering part
-    #     filters(merged_df)
+    if args.filters:
+        # filtering part
+        filters(merged_df)
     
-    # if args.plot:
-    #     # visualization part
-    #     plot(merged_df) 
+    if args.plot:
+        # visualization part
+        plot(merged_df) 
 
     print("\nTHE END")

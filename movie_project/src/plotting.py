@@ -54,7 +54,7 @@ def plot_type_per_decade(df, start_decade=1940, normalize=True):
 
     # create column "decade"
     df["decade"] = df["first_air_date"].dt.year//10*10
-    df = df[df["decade"] > start_decade]
+    df = df[df["decade"] >= start_decade]
 
     counts_per_decade = df.groupby(["decade", "type"]).size().unstack()
     if normalize:
