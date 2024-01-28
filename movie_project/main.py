@@ -1,4 +1,5 @@
 """Main module to run the project."""
+import argparse
 import glob
 from movie_project.src.decompress_read import decompress_file
 from movie_project.src.decompress_read import read_and_merge_csv_files
@@ -14,11 +15,9 @@ from movie_project.src.plotting import plot_count_per_year
 from movie_project.src.plotting import plot_type_per_decade
 from movie_project.src.plotting import genre_piechart
 
-
-if __name__ == "__main__":
-    # decompress the compressed file
-    decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
-
+# Reading part
+def read():
+    """Read the dataset."""
     # get the list of csv files
     csv_list = glob.glob("movie_project/data/*.csv")
 
@@ -29,12 +28,12 @@ if __name__ == "__main__":
 
     # # merge the csv files into a single dictionary
     merged_dict = read_and_merge_csv_to_dict(csv_list, id="id")
-    len(merged_dict)
+    
+    return merged_df, merged_dict
 
-    # Answer to Exercise 1.4:
-    print("blabla bla")
-
-
+# Processing part
+def process(merged_df):
+    """Process the dataset."""
     # Exercise 2:
     ## Exercise 2.1:
     days_on_air = calculate_days_on_air(merged_df)
@@ -52,7 +51,9 @@ if __name__ == "__main__":
     for key, value in list(poster_dict.items())[:ENTRIES_TO_SHOW]:
         print(f"{key}: {value}")
 
-
+# Filtering part
+def filter(merged_df):
+    """Apply filters to the dataset."""
     # Exercise 3:
     ## Exercise 3.1:
     LANGUAGE = "en"
@@ -82,10 +83,11 @@ if __name__ == "__main__":
     new_lang_df = filter_by_language(merged_df, language=LANGUAGE, strict=False)
     new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW)
 
-    # Visualization part
+# Visualization part
+def plot(merged_df):
+    """Make all the plots."""
     ## Exercise 4.1:
     plot_count_per_year(merged_df)
-
 
     ## Exercise 4.2:
     plot_type_per_decade(merged_df, start_decade=1940, normalize=True)
@@ -93,5 +95,37 @@ if __name__ == "__main__":
     ## Exercise 4.3:
     genres_series = filter_genres(merged_df, minimum_percentage=0.01)
     genre_piechart(genres_series)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Movie project Script")
+    parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
+    #parser.add_argument("--read_and_merge", action="store_true", help="Read and merge the csv files")
+    parser.add_argument("--process", action="store_true", help="Process the dataset")
+    parser.add_argument("--filter", action="store_true", help="Apply request filters to the dataset")
+    parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
+
+    args = parser.parse_args()
+
+    if args.decompress:
+        # Exercise 1:
+        # decompress the compressed file
+        decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
+
+    #if args.read_and_merge:
+        # reading part
+    merged_df, merged_dict = read()
+    
+    if args.process:
+        # processing part
+        process(merged_df)
+    
+    if args.filter:
+        # filtering part
+        filter(merged_df)
+    
+    if args.plot:
+        # visualization part
+        plot(merged_df)   
 
     print("THE END")
