@@ -116,6 +116,8 @@ def filter_genres(df, minimum_percentage=0.01):
     # drop rows where genres is Nan
     df.dropna(subset=["genres"], inplace=True)
     genres = df.groupby(by="genres")
+
+    # get list of all genres TODO: This part could be improved
     genres_list = genres.size().index.to_list()
     flattened_list = [item for sublist in (s.split(',') for s in genres_list) for item in sublist]
     
@@ -132,11 +134,13 @@ def filter_genres(df, minimum_percentage=0.01):
 
 
     genres_df = pd.DataFrame(genres_percent)
+    genres_df.reset_index(inplace=True)
     genres_clean_df = genres_df.replace(genres_to_discard, "Other")
+    # Combine all categories that now are "Other"
+    combined_series = genres_clean_df.groupby('index')['count'].sum()
     
-    # TODO: need to merge all the columns that have index "Other" together
 
     #df[]
 
-    return genres_clean_df
+    return combined_series
 
