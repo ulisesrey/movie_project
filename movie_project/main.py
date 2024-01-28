@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
 
     ## Exercise 4.2:
-    plot_type_per_decade(merged_df, start_decade=1940)
+    plot_type_per_decade(merged_df, start_decade=1940, normalize=True)
 
     ## Exercise 4.3:
     genres_series = filter_genres(merged_df, minimum_percentage=0.01)
