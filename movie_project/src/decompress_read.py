@@ -27,11 +27,11 @@ def decompress_file(file_path, output_dir=None):
     if file_extension == '.zip':
         with zipfile.ZipFile(file_path, 'r') as zip_ref:
             zip_ref.extractall(extract_dir)  # Extract in the specified or default directory
-        print(f"File {file_path} has been successfully decompressed.")
+        print(f"File {file_path} has been successfully decompressed in: ", extract_dir)
     elif file_extension == '.tar.gz':
         with tarfile.open(file_path, 'r:gz') as tar_ref:
             tar_ref.extractall(extract_dir)  # Extract in the specified or default directory
-        print(f"File {file_path} has been successfully decompressed.")
+        print(f"File {file_path} has been successfully decompressed in: ", extract_dir)
     else:
         print(f"Error: File {file_path} is not in zip or tar.gz format.")
 
