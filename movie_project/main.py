@@ -41,7 +41,7 @@ def process(merged_df):
     # Show the top shows with the most days on air
     TOP_SHOWS = 10
     print("These are the top shows with the most days on air:")
-    days_on_air.sort_values(by="days_on_air", ascending=False).head(TOP_SHOWS)
+    print(days_on_air.sort_values(by="days_on_air", ascending=False).head(TOP_SHOWS))
 
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
@@ -103,40 +103,41 @@ def plot(merged_df):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Movie project Script")
-    parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
-    parser.add_argument("--process", action="store_true", help="Process the dataset")
-    parser.add_argument("--filters", action="store_true", help="Apply request filters to the dataset")
-    parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
-    parser.add_argument('--all', action='store_true', help='Run all blocks')
+    # parser = argparse.ArgumentParser(description="Movie project Script")
+    # parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
+    # parser.add_argument("--process", action="store_true", help="Process the dataset")
+    # parser.add_argument("--filters", action="store_true", help="Apply request filters to the dataset")
+    # parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
+    # parser.add_argument('--all', action='store_true', help='Run all blocks')
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
+    args_all= True
 
-    if args.decompress or args.all:
-        # Exercise 1:
-        # decompress the compressed file
-        decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
+    # if args.decompress or args.all:
+    #     # Exercise 1:
+    #     # decompress the compressed file
+    #     decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
     # read always unless command was decompress
-    if not args.decompress:
+    #if not args.decompress:
         # reading part
-        merged_df, merged_dict = read()
+    merged_df, merged_dict = read()
 
-    if args.all:
+    if args_all:
         process(merged_df)
         filters(merged_df)
         plot(merged_df)
         
-    if args.process:
-        # processing part
-        process(merged_df)
+    # if args.process:
+    #     # processing part
+    #     process(merged_df)
     
-    if args.filters:
-        # filtering part
-        filters(merged_df)
+    # if args.filters:
+    #     # filtering part
+    #     filters(merged_df)
     
-    if args.plot:
-        # visualization part
-        plot(merged_df) 
+    # if args.plot:
+    #     # visualization part
+    #     plot(merged_df) 
 
     print("\nTHE END")
