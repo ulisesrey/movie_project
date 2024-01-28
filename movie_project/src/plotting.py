@@ -32,8 +32,7 @@ def plot_count_per_year(df):
     plt.title("Number of shows per year")
     plt.xlabel("Year")
     plt.ylabel("Number of shows")
-    plt.show() 
-    return None
+    plt.show()
 
 def plot_type_per_decade(df, start_decade=1940, normalize=True):
     """
@@ -64,7 +63,6 @@ def plot_type_per_decade(df, start_decade=1940, normalize=True):
     plt.title('Types of shows per decade')
     plt.ylabel("Percentage of shows")
     plt.show()
-    return None
 
 
 def genre_piechart(series):
@@ -80,7 +78,7 @@ def genre_piechart(series):
     None
     """
     #do a piechart with the series, title should be "Piechart of genres"
-    patches, labels, pct_texts = plt.pie(series, autopct='%1.1f%%',\
+    _, labels, pct_texts = plt.pie(series, autopct='%1.1f%%',\
                                 labels=series.index, rotatelabels=True, labeldistance=1.1,\
                                 pctdistance=0.8)
     for label, pct_text in zip(labels, pct_texts):
@@ -88,5 +86,4 @@ def genre_piechart(series):
 
     plt.title('Shows per genre', loc="left")
     plt.show()
-    return None
     
