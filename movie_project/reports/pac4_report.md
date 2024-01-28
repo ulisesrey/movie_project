@@ -7,17 +7,18 @@ In summary:
 We have written code to uncompress and read the data from the TMBD.
 ## 1. Processing the data
 We have seen the top shows with most days in air:
-           id                                       name days_on_air
-14970     637                           CBS Evening News  30043 days
-41903  215684  Neujahrskonzert der Wiener Philharmoniker  29950 days
-9826    71494                        Golden Globe Awards  28845 days
-79605   23393                                  BBC Proms  27762 days
-12527    4496                             Meet the Press  27555 days
-38826    5730             Macy's Thanksgiving Day Parade  27027 days
-32137   26183                           The BAFTA Awards  26929 days
-18283   28464                            The Emmy Awards  26893 days
-21388    1770                             ABC World News  26805 days
-11145   66550                     Sanremo Music Festival  26311 days
+| id                                       name days_on_air |
+|---|
+| 14970     637                           CBS Evening News  30043 days |
+| 41903  215684  Neujahrskonzert der Wiener Philharmoniker  29950 days |
+| 9826    71494                        Golden Globe Awards  28845 days |
+| 79605   23393                                  BBC Proms  27762 days |
+| 12527    4496                             Meet the Press  27555 days |
+| 38826    5730             Macy's Thanksgiving Day Parade  27027 days |
+| 32137   26183                           The BAFTA Awards  26929 days |
+| 18283   28464                            The Emmy Awards  26893 days |
+| 21388    1770                             ABC World News  26805 days |
+| 11145   66550                     Sanremo Music Festival  26311 days |
 
 We have seen some entries with the links to their posters:
 Game of Thrones: http://www.hbo.com/game-of-thrones/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg
