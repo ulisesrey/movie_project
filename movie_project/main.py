@@ -40,6 +40,7 @@ def process(merged_df):
 
     # Show the top shows with the most days on air
     TOP_SHOWS = 10
+    print("These are the top shows with the most days on air:")
     days_on_air.sort_values(by="days_on_air", ascending=False).head(TOP_SHOWS)
 
     ## Exercise 2.2:
@@ -48,6 +49,7 @@ def process(merged_df):
 
     # Show the first entries in the dictionary
     ENTRIES_TO_SHOW = 5
+    print("These are some entries with the links to the posters:")
     for key, value in list(poster_dict.items())[:ENTRIES_TO_SHOW]:
         print(f"{key}: {value}")
 
@@ -63,10 +65,14 @@ def filters(merged_df):
     topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
 
     # print it
+    print("\nThese are some of the movies in language \"{}\" with the topics {}:".format(LANGUAGE, strings_to_filter))
+    print("Important, since this list can be very long (1469 entries for the\
+          exercise request, only some are shown. Uncomment the the code to save it\
+          into a csv if you want to inspect it further.")
     print(topic_lang_df["name"])
 
     # If you want to save the filtered dataframe
-    topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
+    # topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
     ## Exercise 3.2:
     YEAR = 2023
@@ -75,13 +81,15 @@ def filters(merged_df):
 
     year_df = filter_by_starting_year(merged_df, start_year=YEAR)
     status_year_df = filter_by_status(year_df, status=STATUS)
-    status_year_df[["name", "first_air_date", "status"]].head(ENTRIES_TO_SHOW)
+    print(f"\nThese are the shows that started in {YEAR} and were {STATUS}:")
+    print(status_year_df[["name", "first_air_date", "status"]].head(ENTRIES_TO_SHOW))
 
     ## Exercise 3.3:
     LANGUAGE = "ja" # japanese
     ENTRIES_TO_SHOW = 20
     new_lang_df = filter_by_language(merged_df, language=LANGUAGE, strict=False)
-    new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW)
+    print(f"\nThese are the some shows that are in \"{LANGUAGE}\":")
+    print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW))
 
 # Visualization part
 def plot(merged_df):
@@ -108,6 +116,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.all:
+        # run all
         decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
         merged_df, merged_dict = read()
         process(merged_df)
@@ -120,6 +129,7 @@ if __name__ == "__main__":
         decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
     if args.process or args.filters or args.plot:
+        # reading part
         merged_df, merged_dict = read()
         
     if args.process:
