@@ -11,6 +11,7 @@ https://stackoverflow.com/questions/36269746/matplotlib-plots-arent-shown-when-r
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 def plot_count_per_year(df):
     """
     Plot the number of shows per year.
@@ -58,20 +59,25 @@ def plot_type_per_decade(df, start_decade=1940):
     return None
 
 
-def genre_piechart(df):
+def genre_piechart(series):
     """
     Plot a piechart with the percentage of shows per genre.
 
     Parameters:
     ------------
-    df: DataFrame
+    series: pd.Series
         
     Returns:
     ------------
     None
     """
-    #do a piechart with the dataframe
-    plt.pie(df.groupby("genres").size(), labels=df.groupby("genres").size().index, autopct='%1.1f%%')
+    #do a piechart with the series
+    patches, labels, pct_texts = plt.pie(series, autopct='%1.1f%%',\
+                                labels=series.index, rotatelabels=True, labeldistance=1.1,\
+                                pctdistance=0.8)
+    for label, pct_text in zip(labels, pct_texts):
+        pct_text.set_rotation(label.get_rotation())
+
     plt.show()
     return None
     
