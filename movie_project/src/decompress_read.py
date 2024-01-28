@@ -10,7 +10,6 @@ import csv
 import pandas as pd
 
 
-
 def decompress_file(file_path, output_dir=None):
     """
     Decompress a tar.gz or .zip file given its path

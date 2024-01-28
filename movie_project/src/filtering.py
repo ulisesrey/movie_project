@@ -84,6 +84,7 @@ def filter_by_starting_year(df, start_year):
     filtered_df = df[df["first_air_date"].dt.year == start_year]
     return filtered_df
 
+
 def filter_by_status(df, status):
     """
     Filter the dataframe by status.
@@ -102,6 +103,7 @@ def filter_by_status(df, status):
     """
     filtered_df = df[df["status"] == status]
     return filtered_df
+
 
 def filter_genres(df, minimum_percentage=0.01):
     """
