@@ -22,14 +22,14 @@ def read():
     csv_list = glob.glob("movie_project/data/*.csv")
 
     # merge the csv files into a single dataframe
-    merged_df = read_and_merge_csv_files(csv_list, id="id")
-    # optional to save the merged_df
-    #merged_df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
+    df = read_and_merge_csv_files(csv_list, id="id")
+    # optional to save the df
+    #df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
 
     # # merge the csv files into a single dictionary
     merged_dict = read_and_merge_csv_to_dict(csv_list, id="id")
     
-    return merged_df, merged_dict
+    return df, merged_dict
 
 # Processing part
 def process(merged_df):
@@ -65,11 +65,8 @@ def filters(merged_df):
     topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
 
     # print it
-    print("\nThese are some of the movies in language \"{}\" with the topics {}:".format(LANGUAGE, strings_to_filter))
-    print("Important, since this list can be very long (1469 entries for the\
-          exercise request, only some are shown. Uncomment the the code to save it\
-          into a csv if you want to inspect it further.")
-    print(topic_lang_df["name"])
+    print("\nThese are the movies in language \"{}\" with the topics {}:".format(LANGUAGE, strings_to_filter))
+    print(topic_lang_df["name"].to_string(index=False))
 
     # If you want to save the filtered dataframe
     # topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
@@ -115,22 +112,20 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.all:
-        # run all
-        decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
-        merged_df, merged_dict = read()
-        process(merged_df)
-        filters(merged_df)
-        plot(merged_df)
-
-    if args.decompress:
+    if args.decompress or args.all:
         # Exercise 1:
         # decompress the compressed file
         decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
-    if args.process or args.filters or args.plot:
+    # read always unless command was decompress
+    if not args.decompress:
         # reading part
         merged_df, merged_dict = read()
+
+    if args.all:
+        process(merged_df)
+        filters(merged_df)
+        plot(merged_df)
         
     if args.process:
         # processing part
@@ -144,4 +139,4 @@ if __name__ == "__main__":
         # visualization part
         plot(merged_df) 
 
-    print("THE END")
+    print("\nTHE END")
