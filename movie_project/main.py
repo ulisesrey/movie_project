@@ -1,5 +1,8 @@
+"""Main module to run the project."""
 import glob
-from movie_project.src.decompress_read import *
+from movie_project.src.decompress_read import decompress_file
+from movie_project.src.decompress_read import read_and_merge_csv_files
+from movie_project.src.decompress_read import read_and_merge_csv_to_dict
 from movie_project.src.processing import calculate_days_on_air
 from movie_project.src.processing import create_show_poster_dict
 from movie_project.src.filtering import filter_by_language
@@ -13,9 +16,8 @@ from movie_project.src.plotting import genre_piechart
 
 
 if __name__ == "__main__":
-    
     # decompress the compressed file
-    #decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
+    decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
     # get the list of csv files
     csv_list = glob.glob("movie_project/data/*.csv")
@@ -38,28 +40,27 @@ if __name__ == "__main__":
     days_on_air = calculate_days_on_air(merged_df)
 
     # Show the top shows with the most days on air
-    top_shows = 10
-    days_on_air.sort_values(by="days_on_air", ascending=False).head(top_shows)
+    TOP_SHOWS = 10
+    days_on_air.sort_values(by="days_on_air", ascending=False).head(TOP_SHOWS)
 
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
     poster_dict = create_show_poster_dict(merged_df)
 
     # Show the first entries in the dictionary
-    entries_to_show = 5
-    for key, value in list(poster_dict.items())[:entries_to_show]:
+    ENTRIES_TO_SHOW = 5
+    for key, value in list(poster_dict.items())[:ENTRIES_TO_SHOW]:
         print(f"{key}: {value}")
-
 
 
     # Exercise 3:
     ## Exercise 3.1:
-    language = "en"
-    lang_df = filter_by_language(merged_df, language=language)
+    LANGUAGE = "en"
+    lang_df = filter_by_language(merged_df, language=LANGUAGE)
 
     strings_to_filter = ["crime", "mistery"]
-    topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter) # Not case sensitive
-    
+    topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
+
     # print it
     print(topic_lang_df["name"])
 
@@ -67,20 +68,19 @@ if __name__ == "__main__":
     topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
     ## Exercise 3.2:
-    year = 2023
-    status = "Canceled"
-    entries_to_show = 20
+    YEAR = 2023
+    STATUS = "Canceled"
+    ENTRIES_TO_SHOW = 20
 
-    year_df = filter_by_starting_year(merged_df, start_year=year)
-    status_year_df = filter_by_status(year_df, status=status)
-    status_year_df[["name", "first_air_date", "status"]].head(entries_to_show)
-    
+    year_df = filter_by_starting_year(merged_df, start_year=YEAR)
+    status_year_df = filter_by_status(year_df, status=STATUS)
+    status_year_df[["name", "first_air_date", "status"]].head(ENTRIES_TO_SHOW)
+
     ## Exercise 3.3:
-    language = "ja" # japanese
-    entries_to_show = 20
-    new_lang_df = filter_by_language(merged_df, language=language, strict=False)
-    new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show)
-    
+    LANGUAGE = "ja" # japanese
+    ENTRIES_TO_SHOW = 20
+    new_lang_df = filter_by_language(merged_df, language=LANGUAGE, strict=False)
+    new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW)
 
     # Visualization part
     ## Exercise 4.1:
@@ -94,6 +94,4 @@ if __name__ == "__main__":
     genres_series = filter_genres(merged_df, minimum_percentage=0.01)
     genre_piechart(genres_series)
 
-
     print("THE END")
-
