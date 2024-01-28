@@ -24,7 +24,7 @@ def read():
     # merge the csv files into a single dataframe
     merged_df = read_and_merge_csv_files(csv_list, id="id")
     # optional to save the merged_df
-    merged_df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
+    #merged_df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
 
     # # merge the csv files into a single dictionary
     merged_dict = read_and_merge_csv_to_dict(csv_list, id="id")
@@ -52,7 +52,7 @@ def process(merged_df):
         print(f"{key}: {value}")
 
 # Filtering part
-def filter(merged_df):
+def filters(merged_df):
     """Apply filters to the dataset."""
     # Exercise 3:
     ## Exercise 3.1:
@@ -100,32 +100,38 @@ def plot(merged_df):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Movie project Script")
     parser.add_argument("--decompress", action="store_true", help="Decompress the compressed file")
-    #parser.add_argument("--read_and_merge", action="store_true", help="Read and merge the csv files")
     parser.add_argument("--process", action="store_true", help="Process the dataset")
-    parser.add_argument("--filter", action="store_true", help="Apply request filters to the dataset")
+    parser.add_argument("--filters", action="store_true", help="Apply request filters to the dataset")
     parser.add_argument("--plot", action="store_true", help="Generate the requested plots")
+    parser.add_argument('--all', action='store_true', help='Run all blocks')
 
     args = parser.parse_args()
+
+    if args.all:
+        decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
+        merged_df, merged_dict = read()
+        process(merged_df)
+        filters(merged_df)
+        plot(merged_df)
 
     if args.decompress:
         # Exercise 1:
         # decompress the compressed file
         decompress_file("movie_project/data/TMDB.zip", "movie_project/data/")
 
-    #if args.read_and_merge:
-        # reading part
-    merged_df, merged_dict = read()
-    
+    if args.process or args.filters or args.plot:
+        merged_df, merged_dict = read()
+        
     if args.process:
         # processing part
         process(merged_df)
     
-    if args.filter:
+    if args.filters:
         # filtering part
-        filter(merged_df)
+        filters(merged_df)
     
     if args.plot:
         # visualization part
-        plot(merged_df)   
+        plot(merged_df) 
 
     print("THE END")
