@@ -91,8 +91,8 @@ if __name__ == "__main__":
     plot_type_per_decade(merged_df, start_decade=1940)
 
     ## Exercise 4.3:
-    genres_df = filter_genres(merged_df, minimum_percentage=0.01)
-    genre_piechart(merged_df)
+    genres_series = filter_genres(merged_df, minimum_percentage=0.01)
+    genre_piechart(genres_series)
 
 
     print("THE END")
