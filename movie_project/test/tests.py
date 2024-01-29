@@ -9,8 +9,6 @@ from movie_project.src.processing import create_show_poster_dict
 from movie_project.src.filtering import filter_by_starting_year
 from movie_project.src.filtering import filter_by_status
 from movie_project.src.filtering import filter_genres
-
-
 import pandas as pd
 
 
