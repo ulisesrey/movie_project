@@ -62,13 +62,13 @@ def filters(merged_df):
     # Exercise 3:
     ## Exercise 3.1:
     language = "en"
-    lang_df = filter_by_language(merged_df, language=language)
+    lang_df = filter_by_language(merged_df, language_field = "original_language", language = language)
 
     strings_to_filter = ["crime", "mistery"]
     topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
 
     # print it
-    print("\nThese are the movies in language \"{}\" with the topics {}:".format(language, strings_to_filter))
+    print("\nThese are the movies in original language \"{}\" with the topics {}:".format(language, strings_to_filter))
     print(topic_lang_df["name"].to_string(index=False))
 
     # If you want to save the filtered dataframe
@@ -91,7 +91,7 @@ def filters(merged_df):
     # pd.set_option('display.max_colwidth', None)
     language = "ja" # japanese
     entries_to_show = 20
-    new_lang_df = filter_by_language(merged_df, language=language, strict=False)
+    new_lang_df = filter_by_language(merged_df, language_field = "languages", language=language, strict=False)
     print(f"\nThese are the some shows that are in \"{language}\" and their networs and production companies:")
     print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show))
 
