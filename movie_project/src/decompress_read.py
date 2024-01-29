@@ -40,7 +40,7 @@ def decompress_file(file_path, output_dir=None):
         print(f"Error: File {file_path} is not in zip or tar.gz format.")
 
 
-def read_and_merge_csv_files(csv_files, my_id):
+def read_and_merge_csv_files(csv_files, my_id="id"):
     """
     Merge multiple CSV files into a single DataFrame based on the 'ID' column.
 
@@ -73,7 +73,7 @@ def read_and_merge_csv_files(csv_files, my_id):
     return merged_df
 
 
-def read_and_merge_csv_to_dict(csv_list, my_id):
+def read_and_merge_csv_to_dict(csv_list, my_id="id"):
     """
     Read multiple CSV files and merge them into a single dictionary using the specified key.
 
