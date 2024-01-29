@@ -1,5 +1,23 @@
 # Movie Project (PAC4, programming for Data Science)
 
+# Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+  - [Requirements](#requirements)
+  - [Install movie_project as a package](#install-movie_project-as-package)
+- [Run](#run)
+  - [Run all](#run-all)
+  - [Run parts](#run-parts)
+  - [Input](#input)
+  - [Output](#output)
+- [Error Handling](#error-handling)
+  - [Too many CSV files](#too-many-csv-files)
+  - [Error with hardcoded file paths, import, or module not found](#error-with-hardcoded-filepaths-import-or-module-not-found)
+- [Modularity](#modularity)
+- [Reports](#reports)
+- [Run Tests](#run-tests)
+- [Further Development](#further-development)
 
 
 
