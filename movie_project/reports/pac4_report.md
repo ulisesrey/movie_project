@@ -67,19 +67,28 @@ We have seen some the shows which have japanese as language, with their original
 "Naruto Shippūden", "ナルト 疾風伝", "TV Tokyo", "TV Tokyo, Pierrot, Sound Box"
 
 ## Plotting
-Fianlly we have produced some plots to get more insights into the data See 
+Fianlly we have produced some plots to get more insights into the data.
+
+To see them all check: 
 ```
-movie_project/movie_project/reports/figures
+movie_project/movie_project/reports/
 ```
 
 1. We have seen that the number of TVs shows has increased exponenitally:
 
+![Figure 1](figure_1.png)
+
+
 2. We have analysed the types of shows for the las decades:
+
+![Figure 2](figure_2.png)
 
 We can see that the distribution has changed throughout the years. To highlight are the increase of Miniseries (specially in the 70s and 80s), of Documentaris, and of Reality shows (this in particular since the 2000s).
 We can also see that News were important in the 40s but not any longer. In general the relative increase of Miniseries, Realities and Documentaries has been to the expense of scripted shows.
 
 3. We generated a general overview of the shows per genre. Dominating genres are Comedy, Sci-Fi, Drama and Action.
+
+![Figure 3](figure_3.png)
 
 ### Other/Extra:
 A part from the beforementioned, we have generated a full python package, using an IDE (VSCode), using version control (git), generated unit tests, and checked for lint using pylint, and coverage using coverage.
