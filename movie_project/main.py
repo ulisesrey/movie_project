@@ -52,7 +52,7 @@ def process(merged_df):
 
     # Show the first entries in the dictionary
     entries_to_show = 5
-    print("These are some entries with the links to the posters:")
+    print("\nThese are some entries with the links to the posters:")
     for key, value in list(poster_dict.items())[:entries_to_show]:
         print(f"{key}: {value}")
 
