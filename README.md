@@ -1,11 +1,13 @@
 # programming_data_science_pac4
-This program was written to analyze the TMBD and extract some meaningful data from it. 
+This program was written to analyze the TMBD and extract some meaningful data from it. The pipeline includes decompressing the zip file, reading the .csv files, processing them, filtering and then generating some plots.
+To view the full report check: [movie_project/reports/pac4_report.md]
 
 
 
 ## Description
 Important: Do not copy nor write any csv file into data folder, as the code will not work properly. The data folder should only contain csv files that belong to a same "dataset" and share and id column.
-If you need to have some csv files within the project write/copy them elsewhere, like in reports/data/ or dev/data/.
+If you need to have some csv files within the project, please write/copy them elsewhere, like in reports/data/ or dev/data/.
+
 ## Installation
 ### Requirements
 Can they be installed with the package with pip install?
