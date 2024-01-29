@@ -63,8 +63,25 @@ We have listed the shows which started on 2023 and have been already cancelled:
 | 21691 | Bling Empire: New York | 2023-01-20 | Canceled |
 
 We have seen some the shows which have japanese as language, with their original name and their networks and production companies, for example:
+|  | id | name | original_name | networks | production_companies |
+|---|---|---|---|---|---|
+| 24 | 31910 | Naruto Shippūden | ナルト 疾風伝 | TV Tokyo | TV Tokyo, Pierrot, Sound Box |
+| 34 | 85937 | Demon Slayer: Kimetsu no Yaiba | 鬼滅の刃 | Fuji TV, Gunma TV, Tokyo MX, BS11, Tokai Television Broadcasting, Kansai   TV, Tochigi TV, Fukui TV, Hokkaido Cultural Broadcasting, Iwate Menkoi   Television, Television Oita System, Sendai Television, SAGA TV, Ishikawa TV,   Television Nishinippon, OHK, Kochi Sun Sun Broadcasting, Television Shin   Hiroshima System, TV Shizuoka, UMK TV Miyazaki, NST, NBS, Sakuranbo TV, TSK,   Ehime Broadcasting, KTS, Fukushima TV, NIB, AKT, Toyama Television, TV   Kumamoto, Okinawa Television Broadcasting | ufotable, Aniplex, Shueisha |
+| 36 | 1429 | Attack on Titan | 進撃の巨人 | MBS, NHK G, Tokyo MX | Production I.G, MAPPA, WIT STUDIO, Pony Canyon, Techno Sound, Kodansha,   dentsu, MBS, Pony Canyon Enterprise |
+| 39 | 46260 | Naruto | ナルト | TV Tokyo | Pierrot, Sound Box |
+| 45 | 62104 | The Seven Deadly Sins | 七つの大罪 | tv asahi, MBS, TV Tokyo, TBS, CBC, TV Aichi, TVQ, TV Osaka, Tulip   Television, TVh, SBC, TSC, BSN, tys, Nagasaki Broadcasting Company, HBC, RKK   Kumamoto Broadcasting, i-Television, SBS TV, IBC Iwate Broadcasting,   Broadcasting System of San-in, Hokuriku Broadcasting, Oita Broadcasting   System, TV-U Fukushima, RSK, TV-U Yamagata, Tohoku Broadcasting, RKB, TV   Kochi Broadcasting, Ryukyu Broadcasting, TV Yamanashi, RCC, MRT Miyazaki   Broadcasting, ATV, MBC South Japan Broadcasting | A-1 Pictures, Studio Deen |
+| 46 | 62715 | Dragon Ball Super | ドラゴンボール超（スーパー） | Fuji TV | Toei Company, Toei Animation, Fuji Television Network, Fizz Sound   Creation |
+| 49 | 65930 | My Hero Academia | 僕のヒーローアカデミア | Nippon TV, MBS, TBS, YTV | BONES, Shueisha, movic, dentsu, Yomiuri Telecasting Corporation, Sony   Music Entertainment (Japan), TOHO |
+| 58 | 12971 | Dragon Ball Z | ドラゴンボールゼット | Fuji TV | Fuji Television Network, Mini Art, Toei Animation, Fizz Sound Creation |
+| 60 | 37854 |  | ワンピース | Fuji TV | Toei Animation, Fuji Television Network, Avex Trax, Shueisha, Asatsu-DK |
+| 76 | 13916 | Death Note | DEATH NOTE | Nippon TV | Madhouse |
+| 89 | 63926 | One-Punch Man | ワンパンマン | TV Tokyo, TV Aichi, TV Osaka | Madhouse, J.C.STAFF, Bandai Visual, Asatsu-DK, East Japan Marketing &   Communications, Shueisha, Lantis, Banpresto, Good Smile Company, TV Tokyo |
+| 99 | 80020 | Super Dragon Ball Heroes | スーパードラゴンボールヒーローズ | Fuji TV | Toei Animation, Fuji Television Network |
+| 108 | 95479 | Jujutsu Kaisen | 呪術廻戦 | MBS, TBS, CBC, Tulip Television, SBC, BSN, tys, HBC, RKK Kumamoto   Broadcasting, Nagasaki Culture Telecasting Corporation, i-Television, SBS TV,   IBC Iwate Broadcasting, Broadcasting System of San-in, Hokuriku Broadcasting,   Oita Broadcasting System, TV-U Fukushima, RSK, TV-U Yamagata, Tohoku   Broadcasting, RKB, TV Kochi Broadcasting, Ryukyu Broadcasting, TV Yamanashi,   RCC, MRT Miyazaki Broadcasting, ATV, MBC South Japan Broadcasting | MAPPA, Sumzap, dugout, Shueisha, MBS, TOHO |
+| 109 | 12609 | Dragon Ball | ドラゴンボール | Fuji TV | Toei Animation, Cloverway, Inc. |
+| 134 | 70881 | Boruto: Naruto Next Generations | BORUTO-ボルト- NARUTO NEXT GENERATIONS | TV Tokyo | Pierrot |
+| 158 | 61374 | Tokyo Ghoul | 東京喰種トーキョーグール | Tokyo MX | Pierrot, Marvelous, TC Entertainment |
 
-"Naruto Shippūden", "ナルト 疾風伝", "TV Tokyo", "TV Tokyo, Pierrot, Sound Box"
 
 ## Plotting
 Fianlly we have produced some plots to get more insights into the data.

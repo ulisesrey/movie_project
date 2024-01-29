@@ -62,7 +62,7 @@ def filters(merged_df):
     # Exercise 3:
     ## Exercise 3.1:
     language = "en"
-    lang_df = filter_by_language(merged_df, language_field = "original_language", language = language)
+    lang_df = filter_by_language(merged_df, language_field="original_language", language=language)
 
     strings_to_filter = ["crime", "mistery"]
     topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
