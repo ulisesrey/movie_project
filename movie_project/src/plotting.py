@@ -80,8 +80,8 @@ def genre_piechart(series):
     None
     """
     # do a piechart with the series, title should be "Piechart of genres"
-    _, labels, pct_texts = plt.pie(series, autopct='%1.1f%%',\
-                        labels=series.index, rotatelabels=True, labeldistance=1.1,\
+    _, labels, pct_texts = plt.pie(series, autopct='%1.1f%%', \
+                        labels=series.index, rotatelabels=True, labeldistance=1.1, \
                         pctdistance=0.8)
     for label, pct_text in zip(labels, pct_texts):
         pct_text.set_rotation(label.get_rotation())
