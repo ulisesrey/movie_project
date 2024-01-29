@@ -92,7 +92,7 @@ def filters(merged_df):
     language = "ja" # japanese
     entries_to_show = 20
     new_lang_df = filter_by_language(merged_df, language_field = "languages", language=language, strict=False)
-    print(f"\nThese are the some shows that are in \"{language}\" and their networs and production companies:")
+    print(f"\nThese are the some shows that are in \"{language}\" and their networks and production companies:")
     print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show))
 
 
