@@ -94,7 +94,7 @@ python movie_project/main.py --process
 
 If you want to filter the data, run: (it will also read, assumes you have decompressed before)
 ```bash
-python movie_project/main.py --filter
+python movie_project/main.py --filters
 ```
 
 If you want to plot the data, run: (it will also read, assumes you have decompressed before)

@@ -56,6 +56,7 @@ def process(merged_df):
     for key, value in list(poster_dict.items())[:entries_to_show]:
         print(f"{key}: {value}")
 
+
 # Filtering part
 def filters(merged_df):
     """Apply filters to the dataset."""
