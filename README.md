@@ -43,6 +43,7 @@ To intall them do:
 pip install -r requirements.txt
 ```
 
+
 ### Install movie_project as package
 To run the code in this package you also need to install it.
 
