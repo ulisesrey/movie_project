@@ -59,7 +59,6 @@ matplotlib==3.7.2
 matplotlib-inline==0.1.6
 mccabe==0.7.0
 mistune==0.8.4
-movie-project==1.0.0
 munkres==1.1.4
 nbclassic==0.5.5
 nbclient==0.5.13

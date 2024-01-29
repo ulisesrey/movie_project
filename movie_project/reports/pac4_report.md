@@ -5,6 +5,9 @@ In this project we worked on the Movie Database (TMDB) to get some insights abou
 In summary:
 ## 0. Uncompressing and reading the data
 We have written code to uncompress and read the data from the TMBD.
+
+The times to read the data are now similar when using pandas or a dictionary (about 2s), but it will be more efficient to read it as a dictionary for big datasets, because we don't need to load everything into memory.
+
 ## 1. Processing the data
 We have seen the top shows with most days in air:
 | id | name | days_on_air |

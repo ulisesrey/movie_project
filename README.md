@@ -134,6 +134,16 @@ ls
 CONTRIBUTING.md		LICENSE			build			movie_project		requirements.txt	setup.py
 INSTALL.md		README.md		exercise.md		movie_project.egg-info	requirements_short.txt
 ```
+### Error with matplotlib plots
+If you get the following error when trying to plot:
+```bash
+UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+```
+Is because you dont have a back end. To install one do:
+```
+sudo apt-get install python3-tk
+```
+After this it should work [[ref]](https://stackoverflow.com/questions/56656777/userwarning-matplotlib-is-currently-using-agg-which-is-a-non-gui-backend-so).
 
 ## Modularity
 
