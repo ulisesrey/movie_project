@@ -68,7 +68,7 @@ def read_and_merge_csv_files(csv_files, my_id="id"):
             # Merge with the existing DataFrame based on the 'ID' column
             merged_df = pd.merge(merged_df, df, on=my_id, how="outer")
     end_time = time.time()
-    print(f"Processing time: {end_time - start_time} seconds")
+    print(f"Processing time for read_and_merge_csv using pandas is: {end_time - start_time} seconds")
 
     return merged_df
 
@@ -100,6 +100,6 @@ def read_and_merge_csv_to_dict(csv_list, my_id="id"):
                 merged_dict[row[my_id]] = row
 
     end_time = time.time()
-    print(f"Processing time: {end_time - start_time} seconds")
+    print(f"Processing time to read and merge using OrderedDict is: {end_time - start_time} seconds")
 
     return merged_dict
