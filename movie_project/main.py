@@ -1,6 +1,7 @@
 """Main module to run the project."""
 import argparse
 import glob
+import pandas as pd
 from movie_project.src.decompress_read import decompress_file
 from movie_project.src.decompress_read import read_and_merge_csv_files
 from movie_project.src.decompress_read import read_and_merge_csv_to_dict
@@ -14,7 +15,7 @@ from movie_project.src.filtering import filter_genres
 from movie_project.src.plotting import plot_count_per_year
 from movie_project.src.plotting import plot_type_per_decade
 from movie_project.src.plotting import genre_piechart
-import pandas as pd
+
 
 # Reading part
 def read():
@@ -25,33 +26,34 @@ def read():
     # merge the csv files into a single dataframe
     df = read_and_merge_csv_files(csv_list, my_id="id")
     # optional to save the df
-    #df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
+    # df.to_csv("movie_project/reports/data/merged_df.csv", index=False)
 
     # # merge the csv files into a single dictionary
     merged_dict = read_and_merge_csv_to_dict(csv_list, my_id="id")
     
     return df, merged_dict
 
+
 # Processing part
 def process(merged_df):
     """Process the dataset."""
     # Exercise 2:
-    ## Exercise 2.1:
+    # Exercise 2.1:
     days_on_air = calculate_days_on_air(merged_df)
 
     # Show the top shows with the most days on air
-    TOP_SHOWS = 10
+    top_shows = 10
     print("These are the top shows with the most days on air:")
-    print(days_on_air.sort_values(by="days_on_air", ascending=False).head(TOP_SHOWS))
+    print(days_on_air.sort_values(by="days_on_air", ascending=False).head(top_shows))
 
     ## Exercise 2.2:
     # Create a dictionary with show names and poster paths
     poster_dict = create_show_poster_dict(merged_df)
 
     # Show the first entries in the dictionary
-    ENTRIES_TO_SHOW = 5
+    entries_to_show = 5
     print("These are some entries with the links to the posters:")
-    for key, value in list(poster_dict.items())[:ENTRIES_TO_SHOW]:
+    for key, value in list(poster_dict.items())[:entries_to_show]:
         print(f"{key}: {value}")
 
 # Filtering part
@@ -59,50 +61,51 @@ def filters(merged_df):
     """Apply filters to the dataset."""
     # Exercise 3:
     ## Exercise 3.1:
-    LANGUAGE = "en"
-    lang_df = filter_by_language(merged_df, language=LANGUAGE)
+    language = "en"
+    lang_df = filter_by_language(merged_df, language=language)
 
     strings_to_filter = ["crime", "mistery"]
     topic_lang_df = filter_by_string_in_overview(lang_df, strings_to_filter)
 
     # print it
-    print("\nThese are the movies in language \"{}\" with the topics {}:".format(LANGUAGE, strings_to_filter))
+    print("\nThese are the movies in language \"{}\" with the topics {}:".format(language, strings_to_filter))
     print(topic_lang_df["name"].to_string(index=False))
 
     # If you want to save the filtered dataframe
     # topic_lang_df["overview"].to_csv("movie_project/reports/data/filtered.csv")
 
     ## Exercise 3.2:
-    YEAR = 2023
-    STATUS = "Canceled"
-    ENTRIES_TO_SHOW = 20
+    year = 2023
+    status = "Canceled"
+    entries_to_show = 20
 
-    year_df = filter_by_starting_year(merged_df, start_year=YEAR)
-    status_year_df = filter_by_status(year_df, status=STATUS)
-    print(f"\nThese are the shows that started in {YEAR} and were {STATUS}:")
-    print(status_year_df[["name", "first_air_date", "status"]].head(ENTRIES_TO_SHOW))
+    year_df = filter_by_starting_year(merged_df, start_year=year)
+    status_year_df = filter_by_status(year_df, status=status)
+    print(f"\nThese are the shows that started in {year} and were {status}:")
+    print(status_year_df[["name", "first_air_date", "status"]].head(entries_to_show))
 
     ## Exercise 3.3:
     pd.set_option('display.max_columns', None)
     # pd.set_option('display.max_rows', None)
     # pd.set_option('display.width', None)
     # pd.set_option('display.max_colwidth', None)
-    LANGUAGE = "ja" # japanese
-    ENTRIES_TO_SHOW = 20
-    new_lang_df = filter_by_language(merged_df, language=LANGUAGE, strict=False)
-    print(f"\nThese are the some shows that are in \"{LANGUAGE}\" and their networs and production companies:")
-    print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(ENTRIES_TO_SHOW))
+    language = "ja" # japanese
+    entries_to_show = 20
+    new_lang_df = filter_by_language(merged_df, language=language, strict=False)
+    print(f"\nThese are the some shows that are in \"{language}\" and their networs and production companies:")
+    print(new_lang_df[["name", "original_name", "networks", "production_companies"]].head(entries_to_show))
+
 
 # Visualization part
 def plot(merged_df):
     """Make all the plots."""
-    ## Exercise 4.1:
+    # Exercise 4.1:
     plot_count_per_year(merged_df)
 
-    ## Exercise 4.2:
+    # Exercise 4.2:
     plot_type_per_decade(merged_df, start_decade=1940, normalize=True)
 
-    ## Exercise 4.3:
+    # Exercise 4.3:
     genres_series = filter_genres(merged_df, minimum_percentage=0.01)
     genre_piechart(genres_series)
 
@@ -131,15 +134,15 @@ if __name__ == "__main__":
         process(merged_df)
         filters(merged_df)
         plot(merged_df)
-        
+
     if args.process:
         # processing part
         process(merged_df)
-    
+
     if args.filters:
         # filtering part
         filters(merged_df)
-    
+
     if args.plot:
         # visualization part
         plot(merged_df) 
