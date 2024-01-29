@@ -24,9 +24,9 @@ def calculate_days_on_air(df):
     """
     df["first_air_date"] = pd.to_datetime(df["first_air_date"])
     df["last_air_date"] = pd.to_datetime(df["last_air_date"])
-    df["days_on_air"] =  df["last_air_date"] - df["first_air_date"]
+    df["days_on_air"] = df["last_air_date"] - df["first_air_date"]
 
-    return df[["id","name","days_on_air"]]
+    return df[["id", "name", "days_on_air"]]
 
 
 def create_show_poster_dict(df):
