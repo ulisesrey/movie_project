@@ -1,0 +1,32 @@
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 2.4911561012268066 seconds
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 2.962160110473633 seconds
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 5.12989616394043 seconds
+Processing time: 2.638637065887451 seconds
+Processing time: 2.3787059783935547 seconds
+Processing time: 2.2831521034240723 seconds
+Processing time: 2.1222479343414307 seconds
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 2.1561450958251953 seconds
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 2.2558059692382812 seconds
+File movie_project/data/TMDB.zip has been successfully decompressed in:  movie_project/data
+Finding csv files
+list of csv is: ['movie_project/data/TMDB_distribution.csv', 'movie_project/data/TMDB_overview.csv', 'movie_project/data/TMDB_info.csv']
+Processing time: 4.59331202507019 seconds
+Processing time: 2.276242971420288 seconds
+Processing time: 2.054780960083008 seconds
+Processing time: 2.124558925628662 seconds
+Processing time: 2.006082773208618 seconds
