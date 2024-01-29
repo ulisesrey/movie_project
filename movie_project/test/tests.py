@@ -1,6 +1,7 @@
 """Module to perform tests"""
 import unittest
 import glob
+from movie_project.src.decompress_read import decompress_file
 from movie_project.src.decompress_read import read_and_merge_csv_files
 from movie_project.src.decompress_read import read_and_merge_csv_to_dict
 
@@ -9,6 +10,7 @@ class Read(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        decompress_file("movie_project/data/TMDB.zip")
         print("Finding csv files")
         cls._csv_list = glob.glob("movie_project/data/*.csv")
         print("list of csv is:", cls._csv_list)
@@ -29,8 +31,8 @@ class Read(unittest.TestCase):
 
 class Process(unittest.TestCase):
 #add a test to check if there are nans in values of ordered dict
-import unittest
-import glob
+    def setUpClass(cls):
+        
 
 #len(df[df['homepage'].isna()]["homepage"])==112181
 #len(df[df['poster_path'].isna()]["poster_path"])==57631
