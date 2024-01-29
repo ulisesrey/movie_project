@@ -9,10 +9,10 @@ setup(
     version='1.0.0',
     author='Ulises Rey',
     author_email='ulises.rey.torne@gmail.com',
-    description='A short description of your package',
+    description='A package to analyze the TMDB dataset',
     packages=find_packages(),
+    # List any dependencies your package requires
     install_requires=[
-        # List any dependencies your package requires
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
